@@ -7,10 +7,10 @@ from stock.models import Product
 product_router = Router()
 
 @product_router.get("/", response=list[ProductSchema])
-def get_devices(request):
+def get_products(request):
     return Product.objects.all()
 
 @product_router.get("/{product_id}/", response=ProductSchema)
-def get_device(request, product_id: str):
+def get_product(request, product_id: str):
     product = get_object_or_404(Product, id=product_id)
     return product
