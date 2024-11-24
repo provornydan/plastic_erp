@@ -25,7 +25,7 @@ from stock.api.sorted_raw_api import sorted_raw_router
 from stock.api.unsorted_raw_api import unsorted_raw_router
 from stock.api.shredded_api import shredded_router
 from stock.api.sheet_api import sheet_router
-from stock.api.product_api import product_router
+from stock.api.product_api import product_router, product_type_router, product_serial_router
 
 
 api = NinjaAPI()
@@ -36,6 +36,8 @@ api.add_router("/unsorted_raw/", unsorted_raw_router)
 api.add_router("/shredded/", shredded_router)
 api.add_router("/sheet/", sheet_router)
 api.add_router("/product/", product_router)
+api.add_router("/product_types/", product_type_router)
+api.add_router("/product_serials/", product_serial_router)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
