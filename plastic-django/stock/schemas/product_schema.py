@@ -1,4 +1,4 @@
-from ninja import ModelSchema
+from ninja import ModelSchema, Schema
 from stock.models import ProductType, ProductSerial, Product
 from utils.schemas import ColorTypeSchema, PlaticTypeSchema
 
@@ -6,6 +6,9 @@ class ProductTypeSchema(ModelSchema):
     class Meta:
         model = ProductType
         fields = ("id", "name")
+
+class ProductTypeCreateSchema(Schema):
+    name: str
 
 class ProductSerialSchema(ModelSchema):
     type_id: ProductTypeSchema | None = None

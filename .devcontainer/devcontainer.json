@@ -19,7 +19,8 @@
         "vscode": {
             "extensions": [
                 "ms-python.python",
-                "tamasfe.even-better-toml"
+                "tamasfe.even-better-toml",
+                "humao.rest-client"
                 // "charliermarsh.ruff"
             ],
             "settings": {
