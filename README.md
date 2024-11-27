@@ -19,8 +19,9 @@ Enterprise resource planning (ERP) application's backend:
 
 2. Run the following command with Bash Terminal inside 'plastic-django':
 ```bash
-uv sync
-`./manage.py runserver`
+$ uv sync
+
+$ ./manage.py runserver
 ```
 
 3. ORM definitions will approximately replicate the following Entity Relationship Diagram:
