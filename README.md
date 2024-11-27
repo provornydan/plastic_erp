@@ -23,4 +23,6 @@ uv sync
 `./manage.py runserver`
 ```
 
+3. ORM definitions will approximately replicate the following Entity Relationship Diagram:
+
 ![screenshot](readme_assets/PlasticTables.png)
