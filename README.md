@@ -1,4 +1,4 @@
-# plastic_erp
+# Plastic ERP (Enterprise Resource Planning) Application
 
 Enterprise resource planning (ERP) application's backend:
 - Django 
