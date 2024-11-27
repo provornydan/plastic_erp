@@ -1,10 +1,14 @@
+"""Re-export symbols as part of a module's public interface"""
+
 from .product_schema import (
-    ProductSchema, 
-    ProductTypeSchema,
-    ProductTypeCreateSchema,
-    ProductSerialSchema
+    ProductSchema as ProductSchema,
+    ProductCreateSchema as ProductCreateSchema,
+    ProductTypeSchema as ProductTypeSchema,
+    ProductTypeCreateSchema as ProductTypeCreateSchema,
+    ProductSerialSchema as ProductSerialSchema,
+    ProductSerialCreateSchema as ProductSerialCreateSchema
 )
-from .sheet_schema import SheetSchema
-from .shredded_schema import ShreddedSchema
-from .unsorted_raw_schema import UnsortedRawSchema
-from .sorted_raw_schema import SortedRawSchema
+from .sheet_schema import SheetSchema as SheetSchema
+from .shredded_schema import ShreddedSchema as ShreddedSchema
+from .unsorted_raw_schema import UnsortedRawSchema as UnsortedRawSchema
+from .sorted_raw_schema import SortedRawSchema as SortedRawSchema

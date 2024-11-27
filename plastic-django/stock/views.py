@@ -1,3 +1,4 @@
-from django.shortcuts import render
-
-# Create your views here.
+"""
+The module will potentially implement application routes
+outside of API and Admin, in case custom response will be necessary
+"""

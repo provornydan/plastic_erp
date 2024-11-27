@@ -20,8 +20,8 @@
             "extensions": [
                 "ms-python.python",
                 "tamasfe.even-better-toml",
-                "humao.rest-client"
-                // "charliermarsh.ruff"
+                "humao.rest-client",
+                "charliermarsh.ruff"
             ],
             "settings": {
                 "python.testing.pytestArgs": [

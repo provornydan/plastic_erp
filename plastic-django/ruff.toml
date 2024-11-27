@@ -26,10 +26,11 @@ exclude = [
     "node_modules",
     "site-packages",
     "venv",
+    "devices"
 ]
 
 # Same as Black.
-line-length = 100
+line-length = 110
 indent-width = 4
 
 # Assume Python 3.8
@@ -39,7 +40,7 @@ target-version = "py312"
 # Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
 # Check rules here: https://docs.astral.sh/ruff/rules
 select = ["F", "E", "W", "N", "C90", "S", "D", "ANN", "Q"]
-ignore = ["D212", "D213", "D400", "D202", "D203", "D415", "ANN101"]
+ignore = ["D212", "D213", "D400", "D202", "D203", "D205", "D415", "ANN101"]
 
 # Allow fix for all enabled rules (when `--fix`) is provided.
 fixable = ["ALL"]
