@@ -22,3 +22,5 @@ Enterprise resource planning (ERP) application's backend:
 uv sync
 `./manage.py runserver`
 ```
+
+![screenshot](readme_assets/PlasticTables.png)
