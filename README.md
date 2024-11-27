@@ -4,6 +4,8 @@ Enterprise resource planning (ERP) application's backend:
 - Django 
 - DB ORM models
 - RESTful API (using Ninga API)
+- uv package manager efficiency (cargo-like approach)
+- ruff linter and formatting tool (pyflakes, pycodestyle and other conventions)
 
 ## Steps to build the project
 
