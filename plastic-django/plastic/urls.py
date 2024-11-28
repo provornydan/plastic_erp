@@ -28,7 +28,7 @@ from stock.api.sheet_api import sheet_router
 from stock.api.product_api import product_router, product_type_router, product_serial_router
 
 
-api = NinjaAPI()
+api = NinjaAPI(title="Plastic ERP API")
 
 # Register the routers from the apps
 api.add_router("/sorted_raw/", sorted_raw_router)
