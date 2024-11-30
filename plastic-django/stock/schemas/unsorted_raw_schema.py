@@ -1,6 +1,6 @@
 """The module to define Unsorted Plastic related schemas for serialization"""
 
-from ninja import ModelSchema
+from ninja import ModelSchema, Schema
 from stock.models import UnsortedRaw
 
 from utils.schemas import PlaticTypeSchema
@@ -15,3 +15,10 @@ class UnsortedRawSchema(ModelSchema):
 
         model = UnsortedRaw
         fields = ("id", "raw_type", "amount")
+
+
+class UnsortedRawCreateSchema(Schema):
+    """Serialize and validate the ProductType Request"""
+
+    raw_type_id: int | None = None
+    amount: float = 0
