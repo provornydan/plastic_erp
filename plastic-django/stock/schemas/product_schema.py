@@ -21,7 +21,7 @@ class ProductTypeCreateSchema(Schema):
 class ProductSerialSchema(ModelSchema):
     """Serialize and validate the ProductSerial Response"""
 
-    product_type_id: ProductTypeSchema | None = None
+    product_type: ProductTypeSchema | None = None
 
     class Meta:
         """Configuration options for a ProductSerialSchema class"""
@@ -40,7 +40,7 @@ class ProductSerialCreateSchema(Schema):
 class ProductSchema(ModelSchema):
     """Serialize and validate the Product (main object) Response"""
 
-    serial_id: ProductSerialSchema | None = None
+    serial: ProductSerialSchema | None = None
 
     class Meta:
         """Configuration options for a ProductSchema class"""

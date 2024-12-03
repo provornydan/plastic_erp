@@ -10,5 +10,5 @@ from .product_schema import (
 )
 from .sheet_schema import SheetSchema as SheetSchema
 from .shredded_schema import ShreddedSchema as ShreddedSchema
-from .unsorted_raw_schema import UnsortedRawSchema as UnsortedRawSchema
-from .sorted_raw_schema import SortedRawSchema as SortedRawSchema
+from .unsorted_raw_schema import UnsortedRawSchema as UnsortedRawSchema, UnsortedRawCreateSchema
+from .sorted_raw_schema import SortedRawSchema as SortedRawSchema, SortedRawCreateSchema

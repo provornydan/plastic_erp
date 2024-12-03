@@ -33,7 +33,7 @@ def create_product(request: HttpRequest, unsorted_entry: UnsortedRawCreateSchema
     """POST endpoint to create a new entry of Unsorted Raw Plastic in the Database"""
 
     if unsorted_entry.raw_type_id:
-        # We have the serial id in the body -> need to check if such series exists
+        # We have the platic type id in the body -> need to check if such plastic exists
         type_exists = PlasticType.objects.filter(id=unsorted_entry.raw_type_id).exists()
         if not type_exists:
             return 404, {"message": "Platic Type not found"}

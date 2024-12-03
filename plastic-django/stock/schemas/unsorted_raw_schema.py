@@ -18,7 +18,7 @@ class UnsortedRawSchema(ModelSchema):
 
 
 class UnsortedRawCreateSchema(Schema):
-    """Serialize and validate the ProductType Request"""
+    """Serialize and validate the Unsorted Raw Creation Request"""
 
     raw_type_id: int | None = None
     amount: float = 0
