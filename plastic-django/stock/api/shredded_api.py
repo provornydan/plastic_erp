@@ -3,9 +3,11 @@
 from django.shortcuts import get_object_or_404
 from django.http import HttpRequest
 from ninja import Router
+from typing import Dict, Type
 
-from stock.schemas import ShreddedSchema
+from stock.schemas import ShreddedSchema, ShreddedCreateSchema
 from stock.models import Shredded
+from utils.schemas import Error
 
 shredded_router = Router()
 
@@ -21,3 +23,19 @@ def get_shredded_object(request: HttpRequest, shredded_id: str) -> ShreddedSchem
 
     shredded = get_object_or_404(Shredded, id=shredded_id)
     return shredded
+
+
+@shredded_router.post("/", response={200: ShreddedSchema, 404: Error}, tags=["Shredded Plastic"])
+def create_shredded(request: HttpRequest, shredded_entry: ShreddedCreateSchema) -> Dict[int, Type]:
+    """POST endpoint to create a new entry of Unsorted Raw Plastic in the Database"""
+
+    if shredded_entry.raw_type_id:
+        # We have the platic type id in the body -> need to check if such plastic exists
+        type_exists = PlasticType.objects.filter(id=shredded_entry.raw_type_id).exists()
+        if not type_exists:
+            return 404, {"message": "Platic Type not found"}
+
+    shredded_plastic_data = shredded_entry.model_dump()
+    shredded_plastic_model = UnsortedRaw.objects.create(**shredded_plastic_data)
+
+    return shredded_plastic_model

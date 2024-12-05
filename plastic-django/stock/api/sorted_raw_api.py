@@ -27,7 +27,7 @@ def get_sorted_object(request: HttpRequest, sorted_id: str) -> SortedRawSchema:
     return sorted
 
 @sorted_raw_router.post("/", response={200: SortedRawSchema, 404: Error}, tags=["Sorted Plastic"])
-def create_product(request: HttpRequest, sorted_entry: SortedRawCreateSchema) -> Dict[int, Type]:
+def create_sorted(request: HttpRequest, sorted_entry: SortedRawCreateSchema) -> Dict[int, Type]:
     """POST endpoint to create a new entry of Sorted Raw Plastic in the Database"""
 
     if sorted_entry.raw_type_id:

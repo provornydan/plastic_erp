@@ -29,7 +29,7 @@ def get_sorted_object(request: HttpRequest, unsorted_id: str) -> UnsortedRawSche
     return sorted
 
 @unsorted_raw_router.post("/", response={200: UnsortedRawSchema, 404: Error}, tags=["Unsorted Plastic"])
-def create_product(request: HttpRequest, unsorted_entry: UnsortedRawCreateSchema) -> Dict[int, Type]:
+def create_unsorted(request: HttpRequest, unsorted_entry: UnsortedRawCreateSchema) -> Dict[int, Type]:
     """POST endpoint to create a new entry of Unsorted Raw Plastic in the Database"""
 
     if unsorted_entry.raw_type_id:
@@ -43,3 +43,16 @@ def create_product(request: HttpRequest, unsorted_entry: UnsortedRawCreateSchema
 
     return unsorted_raw_model
 
+
+# @unsorted_raw_router.post("/{unsorted_id}/set-raw-type/", response=UnsortedRawSchema)
+# def update_sorted(request, unsorted_id, raw_type: DeviceLocationPatch):
+#     device = get_object_or_404(Device, slug=device_slug)
+
+#     if location.location_id:
+#         location = get_object_or_404(Location, id=location.location_id)
+#         device.location = location
+#     else:
+#         device.location = None
+
+#     device.save()
+#     return device

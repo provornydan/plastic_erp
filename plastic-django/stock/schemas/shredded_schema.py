@@ -14,3 +14,12 @@ class ShreddedSchema(ModelSchema):
 
         model = Shredded
         fields = ("id", "raw_type", "mixed", "mix_id", "amount")
+
+
+class ShreddedCreateSchema(Schema):
+    """Serialize and validate the Shredded Plastic Creation Request"""
+
+    raw_type_id: int | None = None
+    mixed: bool = False
+    mix_id: int = 0
+    amount: float = 0
