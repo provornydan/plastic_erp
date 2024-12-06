@@ -1,6 +1,6 @@
 """The module to define Shredded related schemas for serialization"""
 
-from ninja import ModelSchema
+from ninja import ModelSchema, Schema
 from stock.models import Shredded
 from utils.schemas import PlaticTypeSchema
 
