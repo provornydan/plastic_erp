@@ -22,3 +22,6 @@ class UnsortedRawCreateSchema(Schema):
 
     raw_type_id: int | None = None
     amount: float = 0
+
+class RawTypePatch(Schema):
+    raw_type_id: int | None = None

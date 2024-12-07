@@ -6,7 +6,11 @@ from ninja import Router
 from typing import Dict, Type
 
 
-from stock.schemas import UnsortedRawSchema, UnsortedRawCreateSchema
+from stock.schemas import (
+    UnsortedRawSchema, 
+    UnsortedRawCreateSchema,
+    RawTypePatch
+)
 from stock.models import UnsortedRaw
 from utils.schemas import Error
 from utils.models import PlasticType
@@ -44,15 +48,17 @@ def create_unsorted(request: HttpRequest, unsorted_entry: UnsortedRawCreateSchem
     return unsorted_raw_model
 
 
-# @unsorted_raw_router.post("/{unsorted_id}/set-raw-type/", response=UnsortedRawSchema)
-# def update_sorted(request, unsorted_id, raw_type: DeviceLocationPatch):
-#     device = get_object_or_404(Device, slug=device_slug)
+@unsorted_raw_router.post("/{unsorted_id}/set-raw-type/", response=UnsortedRawSchema)
+def update_sorted(request, unsorted_id, raw_type: RawTypePatch):
+    """POST endpoint to update the plastic type of an unsorted plastic entry"""
 
-#     if location.location_id:
-#         location = get_object_or_404(Location, id=location.location_id)
-#         device.location = location
-#     else:
-#         device.location = None
+    unsorted_entry = get_object_or_404(UnsortedRaw, id=unsorted_id)
 
-#     device.save()
-#     return device
+    if raw_type.raw_type_id:
+        raw_type = get_object_or_404(PlasticType, id=raw_type.raw_type_id)
+        unsorted_entry.raw_type = raw_type
+    else:
+        unsorted_entry.raw_type = None
+
+    unsorted_entry.save()
+    return unsorted_entry
