@@ -9,10 +9,9 @@ from typing import Dict, Type
 from stock.schemas import (
     UnsortedRawSchema, 
     UnsortedRawCreateSchema,
-    RawTypePatch
 )
 from stock.models import UnsortedRaw
-from utils.schemas import Error
+from utils.schemas import Error, RawTypePatch
 from utils.models import PlasticType
 
 
@@ -48,8 +47,8 @@ def create_unsorted(request: HttpRequest, unsorted_entry: UnsortedRawCreateSchem
     return unsorted_raw_model
 
 
-@unsorted_raw_router.post("/{unsorted_id}/set-raw-type/", response=UnsortedRawSchema)
-def update_sorted(request, unsorted_id, raw_type: RawTypePatch):
+@unsorted_raw_router.post("/{unsorted_id}/set-raw-type/", response=UnsortedRawSchema, tags=["Unsorted Plastic"])
+def update_unsorted(request, unsorted_id, raw_type: RawTypePatch):
     """POST endpoint to update the plastic type of an unsorted plastic entry"""
 
     unsorted_entry = get_object_or_404(UnsortedRaw, id=unsorted_id)

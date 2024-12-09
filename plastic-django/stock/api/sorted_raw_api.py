@@ -8,7 +8,7 @@ from typing import Dict, Type
 from stock.schemas import SortedRawSchema, SortedRawCreateSchema
 from stock.models import SortedRaw
 from utils.models import PlasticType, ColorType
-from utils.schemas import Error
+from utils.schemas import Error, RawTypePatch
 
 sorted_raw_router = Router()
 
@@ -45,3 +45,18 @@ def create_sorted(request: HttpRequest, sorted_entry: SortedRawCreateSchema) -> 
     sorted_raw_model = SortedRaw.objects.create(**sorted_raw_data)
 
     return sorted_raw_model
+
+@sorted_raw_router.post("/{sorted_id}/set-raw-type/", response=SortedRawSchema, tags=["Sorted Plastic"])
+def update_sorted(request, sorted_id, raw_type: RawTypePatch):
+    """POST endpoint to update the plastic type of a sorted plastic entry"""
+
+    sorted_entry = get_object_or_404(SortedRaw, id=sorted_id)
+
+    if raw_type.raw_type_id:
+        raw_type = get_object_or_404(PlasticType, id=raw_type.raw_type_id)
+        sorted_entry.raw_type = raw_type
+    else:
+        sorted_entry.raw_type = None
+
+    sorted_entry.save()
+    return sorted_entry

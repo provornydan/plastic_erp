@@ -1,6 +1,6 @@
 """The module to define Plastic Type related schemas for serialization"""
 
-from ninja import ModelSchema
+from ninja import ModelSchema, Schema
 from utils.models import PlasticType
 
 class PlaticTypeSchema(ModelSchema):
@@ -11,3 +11,7 @@ class PlaticTypeSchema(ModelSchema):
 
         model = PlasticType
         fields = ("id", "name")
+
+
+class RawTypePatch(Schema):
+    raw_type_id: int | None = None
