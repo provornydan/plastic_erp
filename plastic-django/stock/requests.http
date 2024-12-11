@@ -34,6 +34,6 @@ Content-Type: application/json
 {
     "serial_id": 4,
     "mixed": false,
-    "mix_id": 1,
+    "mix_id": 0,
     "pictures_URL": ""
 }

@@ -53,5 +53,5 @@ class ProductCreateSchema(Schema):
 
     serial_id: int | None = None
     mixed: bool = False
-    mix_id: int
+    mix_id: int = 0
     pictures_URL: str | None = None # noqa: N815
