@@ -8,7 +8,7 @@ from typing import Dict, Type
 from stock.schemas import ShreddedSchema, ShreddedCreateSchema
 from stock.models import Shredded
 from utils.models import PlasticType
-from utils.schemas import Error
+from utils.schemas import Error, RawTypePatch
 
 shredded_router = Router()
 
@@ -40,3 +40,19 @@ def create_shredded(request: HttpRequest, shredded_entry: ShreddedCreateSchema) 
     shredded_plastic_model = Shredded.objects.create(**shredded_plastic_data)
 
     return shredded_plastic_model
+
+
+@shredded_router.post("/{shredded_id}/set-raw-type/", response=ShreddedSchema, tags=["Shredded Plastic"])
+def update_unsorted(request, shredded_id, raw_type: RawTypePatch):
+    """POST endpoint to update the plastic type of shredded plastic entry"""
+
+    shredded_entry = get_object_or_404(Shredded, id=shredded_id)
+
+    if raw_type.raw_type_id:
+        raw_type = get_object_or_404(Shredded, id=raw_type.raw_type_id)
+        shredded_entry.raw_type = raw_type
+    else:
+        shredded_entry.raw_type = None
+
+    shredded_entry.save()
+    return shredded_entry
